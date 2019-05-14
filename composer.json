@@ -1,0 +1,15 @@
+{
+    "name": "escudo/brain-games",
+    "description": "Brain Games",
+    "type": "project",
+    "authors": [
+        {
+            "name": "escudo",
+            "email": "perm.fest@yandex.ru"
+        }
+    ],
+    "require": {},
+    "bin": [
+        "bin/brain-games"
+    ]
+}
