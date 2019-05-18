@@ -10,7 +10,8 @@ function gamesEven($name)
     $rightAnswer = "Correct!\n";
     for ($i = 1; $i <= 3; $i++) {
         $num = mt_rand(1, 100);
-        $answer = prompt($num);
+        out("Question: %s\n", $num);
+        $answer = prompt("Your answer");
         if ($num % 2 == 0) {
             if ($answer == 'yes') {
                 out($rightAnswer);
