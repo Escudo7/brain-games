@@ -1,6 +1,9 @@
 #!/usr/bin/env php
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-print_r("Welcome to the Brain Games!\n");
-$question = 'May I have your name?';
-$name = BrainGames\Cli\run($question);
+
+use function BrainGames\Cli\sayGreeting as sayGreeting;
+use function BrainGames\Cli\run as run;
+
+sayGreeting();
+$name = run('May I have your name?');

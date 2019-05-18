@@ -1,3 +1,13 @@
 #!/usr/bin/env php
 <?php
 require __DIR__ . '/../vendor/autoload.php';
+
+use function BrainGames\Cli\sayGreeting as sayGreeting;
+use function BrainGames\Cli\run as run;
+use function BrainGames\even\gamesEven as gamesEven;
+
+sayGreeting();
+print_r("Answer \"yes\" if number even otherwise answer \"no\".\n");
+$name = run('May I have your name?');
+print_r("Hello, {$name}!\n");
+gamesEven($name);

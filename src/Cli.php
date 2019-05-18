@@ -6,3 +6,8 @@ function run($question)
 {
     return prompt($question);
 }
+
+function sayGreeting () 
+{
+    print_r("Welcome to the Brain Games!\n");
+}
