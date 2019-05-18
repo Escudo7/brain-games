@@ -2,3 +2,5 @@
 [![Build Status](https://travis-ci.org/Escudo7/project-lvl1-s500.svg?branch=master)](https://travis-ci.org/Escudo7/project-lvl1-s500)
 
 [![asciicast](https://asciinema.org/a/cWrGlwJ4tmcMc1xAKyLlJ48jM.svg)](https://asciinema.org/a/cWrGlwJ4tmcMc1xAKyLlJ48jM)
+
+[![asciicast](https://asciinema.org/a/gj8UjHQEMxCKjUaznVUe3LjUn.svg)](https://asciinema.org/a/gj8UjHQEMxCKjUaznVUe3LjUn)
