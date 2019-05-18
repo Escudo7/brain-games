@@ -12,11 +12,13 @@
         "wp-cli/php-cli-tools": "^0.11.11"
     },
     "bin": [
-        "bin/brain-games"
+        "bin/brain-even",
+        "bin/brain-games"    
     ],
     "autoload": {
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/even.php"
         ]
     },
     "require-dev": {

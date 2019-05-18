@@ -2,7 +2,7 @@
 namespace BrainGames\Cli;
 use function cli\prompt as prompt;
 
-function run()
+function run($question)
 {
-    prompt('May I have your name?');
+    return prompt($question);
 }
