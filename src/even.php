@@ -8,8 +8,7 @@ function gamesEven($name)
 {
     $wrongAnswer = "'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, {$name}!\n";
     $rightAnswer = "Correct!\n";
-    for ($i = 1; $i <= 3; $i++)
-    {
+    for ($i = 1; $i <= 3; $i++) {
         $num = mt_rand(1, 100);
         $answer = prompt($num);
         if ($num % 2 == 0) {
