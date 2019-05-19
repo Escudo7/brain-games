@@ -3,29 +3,21 @@ namespace BrainGames\games\engine;
 
 use function cli\prompt as prompt;
 use function cli\out as out;
-use function BrainGames\games\calc\getQuestion as calcGetQuestion;
-use function BrainGames\games\calc\getAnswerRight as calcGetAnswerRight;
-use function BrainGames\games\even\getQuestion as evenGetQuestion;
-use function BrainGames\games\even\getAnswerRight as evenGetAnswerRight;
-use function BrainGames\games\gcd\getQuestion as gcdGetQuestion;
-use function BrainGames\games\gcd\getAnswerRight as gcdGetAnswerRight;
+use function BrainGames\games\calc\createQuestion as calcCreateQuestion;
+use function BrainGames\games\even\createQuestion as evenCreateQuestion;
+use function BrainGames\games\gcd\createQuestion as gcdCreateQuestion;
 
 function startGame($nameGame, $nameUser)
 {
     for ($i = 1; $i <= 3; $i++) {
         if ($nameGame == 'calc') {
-            $question = calcGetQuestion();
-            $answerUser = prompt("Your answer");
-            $answerRight = calcGetAnswerRight(...$question);
+            $answerRight = calcCreateQuestion();
         } elseif ($nameGame == 'even') {
-            $question = evenGetQuestion();
-            $answerUser = prompt("Your answer");
-            $answerRight = evenGetAnswerRight(...$question);
+            $answerRight = evenCreateQuestion();
         } elseif ($nameGame == 'gcd') {
-            $question = gcdGetQuestion();
-            $answerUser = prompt("Your answer");
-            $answerRight = gcdGetAnswerRight(...$question);
+            $answerRight = gcdCreateQuestion();
         }
+        $answerUser = prompt("Your answer");
         $result = getMessageToUser($answerUser, $answerRight, $nameUser);
         if ($result === false) {
             return false;
