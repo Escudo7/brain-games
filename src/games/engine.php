@@ -6,6 +6,7 @@ use function cli\out as out;
 use function BrainGames\games\calc\createQuestion as calcCreateQuestion;
 use function BrainGames\games\even\createQuestion as evenCreateQuestion;
 use function BrainGames\games\gcd\createQuestion as gcdCreateQuestion;
+use function BrainGames\games\prime\createQuestion as primeCreateQuestion;
 use function BrainGames\games\progression\createQuestion as progrCreateQuestion;
 
 function startGame($nameGame, $nameUser)
@@ -20,6 +21,9 @@ function startGame($nameGame, $nameUser)
                 break;
             case 'gcd':
                 $answerRight = gcdCreateQuestion();
+                break;
+            case 'prime':
+                $answerRight = primeCreateQuestion();
                 break;
             case 'progression':
                 $answerRight = progrCreateQuestion();
