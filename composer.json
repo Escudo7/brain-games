@@ -12,6 +12,7 @@
         "wp-cli/php-cli-tools": "^0.11.11"
     },
     "bin": [
+        "bin/brain-calc",
         "bin/brain-even",
         "bin/brain-games"    
     ],
@@ -19,6 +20,7 @@
         "files": [
             "src/Cli.php",
             "src/games/calc.php",
+            "src/games/engine.php",
             "src/games/even.php"
         ]
     },

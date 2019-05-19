@@ -9,8 +9,9 @@ if (file_exists($autoloadPath1)) {
 }
 
 use function BrainGames\Cli\run as run;
-use function BrainGames\games\calc\startGame as startGame;
+use function BrainGames\games\engine\startGame as startGame;
 
+$nameGame = 'calc';
 $startMessage = "What is the result of the expression?\n";
 $nameUser = run($startMessage);
-startGame($nameUser);
+startGame($nameGame, $nameUser);
