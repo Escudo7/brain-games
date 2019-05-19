@@ -6,6 +6,7 @@ use function cli\out as out;
 use function BrainGames\games\calc\createQuestion as calcCreateQuestion;
 use function BrainGames\games\even\createQuestion as evenCreateQuestion;
 use function BrainGames\games\gcd\createQuestion as gcdCreateQuestion;
+use function BrainGames\games\progression\createQuestion as progrCreateQuestion;
 
 function startGame($nameGame, $nameUser)
 {
@@ -16,6 +17,8 @@ function startGame($nameGame, $nameUser)
             $answerRight = evenCreateQuestion();
         } elseif ($nameGame == 'gcd') {
             $answerRight = gcdCreateQuestion();
+        } elseif ($nameGame == 'progression') {
+            $answerRight = progrCreateQuestion();
         }
         $answerUser = prompt("Your answer");
         $result = getMessageToUser($answerUser, $answerRight, $nameUser);
