@@ -8,8 +8,6 @@ if (file_exists($autoloadPath1)) {
     require $autoloadPath2;
 }
 
-use function BrainGames\Cli\sayGreeting as sayGreeting;
 use function BrainGames\Cli\run as run;
 
-sayGreeting();
-$name = run('May I have your name?');
+$name = run();
