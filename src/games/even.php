@@ -1,7 +1,6 @@
 <?php
 namespace BrainGames\games\even;
 
-use function cli\prompt as prompt;
 use function cli\out as out;
 
 function getQuestion()

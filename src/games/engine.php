@@ -7,6 +7,8 @@ use function BrainGames\games\calc\getQuestion as calcGetQuestion;
 use function BrainGames\games\calc\getAnswerRight as calcGetAnswerRight;
 use function BrainGames\games\even\getQuestion as evenGetQuestion;
 use function BrainGames\games\even\getAnswerRight as evenGetAnswerRight;
+use function BrainGames\games\gcd\getQuestion as gcdGetQuestion;
+use function BrainGames\games\gcd\getAnswerRight as gcdGetAnswerRight;
 
 function startGame($nameGame, $nameUser)
 {
@@ -19,6 +21,10 @@ function startGame($nameGame, $nameUser)
             $question = evenGetQuestion();
             $answerUser = prompt("Your answer");
             $answerRight = evenGetAnswerRight(...$question);
+        } elseif ($nameGame == 'gcd') {
+            $question = gcdGetQuestion();
+            $answerUser = prompt("Your answer");
+            $answerRight = gcdGetAnswerRight(...$question);
         }
         $result = getMessageToUser($answerUser, $answerRight, $nameUser);
         if ($result === false) {
