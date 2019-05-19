@@ -12,25 +12,7 @@ use function BrainGames\games\progression\createQuestion as progrCreateQuestion;
 function startGame($nameGame, $nameUser)
 {
     for ($i = 1; $i <= 3; $i++) {
-        switch ($nameGame) {
-            case 'calc':
-                $answerRight = calcCreateQuestion();
-                break;
-            case 'even':
-                $answerRight = evenCreateQuestion();
-                break;
-            case 'gcd':
-                $answerRight = gcdCreateQuestion();
-                break;
-            case 'prime':
-                $answerRight = primeCreateQuestion();
-                break;
-            case 'progression':
-                $answerRight = progrCreateQuestion();
-                break;
-            default:
-                return false;
-        }
+        $answerRight = switchQuestion($nameGame);
         $answerUser = prompt("Your answer");
         $result = getMessageToUser($answerUser, $answerRight, $nameUser);
         if ($result === false) {
@@ -39,6 +21,30 @@ function startGame($nameGame, $nameUser)
     }
     out("Congratulations, %s!\n", $nameUser);
     return true;
+}
+
+function switchQuestion($nameGame)
+{
+    switch ($nameGame) {
+        case 'calc':
+            $answerRight = calcCreateQuestion();
+            break;
+        case 'even':
+            $answerRight = evenCreateQuestion();
+            break;
+        case 'gcd':
+            $answerRight = gcdCreateQuestion();
+            break;
+        case 'prime':
+            $answerRight = primeCreateQuestion();
+            break;
+        case 'progression':
+            $answerRight = progrCreateQuestion();
+            break;
+        default:
+            return false;
+    }
+    return $answerRight;
 }
 
 function getMessageToUser($answerUser, $answerRight, $nameUser)
