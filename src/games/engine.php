@@ -11,14 +11,21 @@ use function BrainGames\games\progression\createQuestion as progrCreateQuestion;
 function startGame($nameGame, $nameUser)
 {
     for ($i = 1; $i <= 3; $i++) {
-        if ($nameGame == 'calc') {
-            $answerRight = calcCreateQuestion();
-        } elseif ($nameGame == 'even') {
-            $answerRight = evenCreateQuestion();
-        } elseif ($nameGame == 'gcd') {
-            $answerRight = gcdCreateQuestion();
-        } elseif ($nameGame == 'progression') {
-            $answerRight = progrCreateQuestion();
+        switch ($nameGame) {
+            case 'calc':
+                $answerRight = calcCreateQuestion();
+                break;
+            case 'even':
+                $answerRight = evenCreateQuestion();
+                break;
+            case 'gcd':
+                $answerRight = gcdCreateQuestion();
+                break;
+            case 'progression':
+                $answerRight = progrCreateQuestion();
+                break;
+            default:
+                return false;
         }
         $answerUser = prompt("Your answer");
         $result = getMessageToUser($answerUser, $answerRight, $nameUser);
