@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+$autoloadPath1 = __DIR__ . '/../vendor/autoload.php';
+$autoloadPath2 = __DIR__ . '/../../../autoload.php';
+if (file_exists($autoloadPath1)) {
+    require $autoloadPath1;
+} else {
+    require $autoloadPath2;
+}
+
+use function BrainGames\Cli\run as run;
+use function BrainGames\games\calc\startGame as startGame;
+
+$startMessage = "What is the result of the expression?\n";
+$nameUser = run($startMessage);
+startGame($nameUser);
