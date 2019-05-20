@@ -8,10 +8,6 @@ if (file_exists($autoloadPath1)) {
     require $autoloadPath2;
 }
 
-use function BrainGames\Cli\run as run;
-use function BrainGames\games\engine\startGame as startGame;
+use function BrainGames\games\prime\startGamePrime as startGamePrime;
 
-$nameGame = 'prime';
-$startMessage = "Answer \"yes\" if given number is prime. Otherwise answer \"no\"\n";
-$nameUser = run($startMessage);
-startGame($nameGame, $nameUser);
+startGamePrime();

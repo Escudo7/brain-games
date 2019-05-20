@@ -1,18 +1,17 @@
 <?php
 namespace BrainGames\games\engine;
 
+use function BrainGames\Cli\run as run;
 use function cli\prompt as prompt;
 use function cli\out as out;
-use function BrainGames\games\calc\createQuestion as calcCreateQuestion;
-use function BrainGames\games\even\createQuestion as evenCreateQuestion;
-use function BrainGames\games\gcd\createQuestion as gcdCreateQuestion;
-use function BrainGames\games\prime\createQuestion as primeCreateQuestion;
+
 use function BrainGames\games\progression\createQuestion as progrCreateQuestion;
 
-function startGame($nameGame, $nameUser)
+function startEngine($startMessage, $generator)
 {
+    $nameUser = run($startMessage);
     for ($i = 1; $i <= 3; $i++) {
-        $answerRight = switchQuestion($nameGame);
+        $answerRight = $generator();
         $answerUser = prompt("Your answer");
         $result = getMessageToUser($answerUser, $answerRight, $nameUser);
         if ($result === false) {
@@ -20,31 +19,7 @@ function startGame($nameGame, $nameUser)
         }
     }
     out("Congratulations, %s!\n", $nameUser);
-    return true;
-}
-
-function switchQuestion($nameGame)
-{
-    switch ($nameGame) {
-        case 'calc':
-            $answerRight = calcCreateQuestion();
-            break;
-        case 'even':
-            $answerRight = evenCreateQuestion();
-            break;
-        case 'gcd':
-            $answerRight = gcdCreateQuestion();
-            break;
-        case 'prime':
-            $answerRight = primeCreateQuestion();
-            break;
-        case 'progression':
-            $answerRight = progrCreateQuestion();
-            break;
-        default:
-            return false;
-    }
-    return $answerRight;
+    return;
 }
 
 function getMessageToUser($answerUser, $answerRight, $nameUser)
