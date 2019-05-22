@@ -27,14 +27,14 @@ function getAnswerRight($number1, $number2)
     $minNumber = min($number1, $number2);
     $gcd = 1;
     for ($i = 2; $i <= $minNumber; $i++) {
-        if (isDivisor($number1, $i) === true && isDivisor($number2, $i) === true) {
+        if (isDivision($number1, $i) === true && isDivision($number2, $i) === true) {
             $gcd = $i;
         }
     }
     return $gcd;
 }
 
-function isDivisor($number, $divisor)
+function isDivision($number, $divisor)
 {
     return $number % $divisor === 0;
 }

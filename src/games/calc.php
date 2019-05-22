@@ -12,7 +12,7 @@ const MAX_NUMBER = 10;
 
 function startGameCalc()
 {
-    $generator = function () {
+    $generate = function () {
         $num1 = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $num2 = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $operator = OPERATORS[array_rand(OPERATORS)];
@@ -20,7 +20,7 @@ function startGameCalc()
         $answerRight = getAnswerRight($num1, $num2, $operator);
         return (string) $answerRight;
     };
-    startEngine(MESSAGE_TASK, $generator);
+    startEngine(MESSAGE_TASK, $generate);
     return;
 }
 

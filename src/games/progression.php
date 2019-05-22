@@ -14,7 +14,7 @@ const MAX_FIRST_NUMBER = 10;
 
 function startGameProgression()
 {
-    $generator = function () {
+    $generate = function () {
         $firstNumber = mt_rand(MIN_FIRST_NUMBER, MAX_FIRST_NUMBER);
         $stepProgression = mt_rand(MIN_STEP_PROGRESSION, MAX_STEP_PROGRESSION);
         $progression = [];
@@ -28,6 +28,6 @@ function startGameProgression()
         out(TEXT_QUESTION, implode(' ', $progression));
         return (string) $secretNumber;
     };
-    startEngine(MESSAGE_TASK, $generator);
+    startEngine(MESSAGE_TASK, $generate);
     return;
 }
