@@ -21,9 +21,9 @@
     ],
     "autoload": {
         "files": [
-            "src/Cli.php",
+            "src/cli.php",
+            "src/engine.php",
             "src/games/calc.php",
-            "src/games/engine.php",
             "src/games/even.php",
             "src/games/gcd.php",
             "src/games/prime.php",

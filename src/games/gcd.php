@@ -1,36 +1,40 @@
 <?php
 namespace BrainGames\games\gcd;
 
-use function cli\out as out;
-use function BrainGames\games\engine\startEngine as startEngine;
+use function cli\out;
+use function BrainGames\engine\startEngine;
+
+const MESSAGE_TASK = "Find the greatest common divisor of given numbers.\n";
+const TEXT_QUESTION = "Question: %s %s \n";
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 50;
 
 function startGameGcd()
 {
-    $startMessage = "Find the greatest common divisor of given numbers.\n";
-    $generator = function () {
-        $num1 = mt_rand(1, 50);
-        $num2 = mt_rand(1, 50);
-        out("Question: %s %s \n", $num1, $num2);
-        $answerRight = getAnswerRight($num1, $num2);
-        return $answerRight;
+    $generate = function () {
+        $number1 = mt_rand(MIN_NUMBER, MAX_NUMBER);
+        $number2 = mt_rand(MIN_NUMBER, MAX_NUMBER);
+        out(TEXT_QUESTION, $number1, $number2);
+        $answerRight = getAnswerRight($number1, $number2);
+        return (string) $answerRight;
     };
-    startEngine($startMessage, $generator);
+    startEngine(MESSAGE_TASK, $generate);
     return;
 }
 
-function getAnswerRight($num1, $num2)
+function getAnswerRight($number1, $number2)
 {
-    $min = min($num1, $num2);
+    $minNumber = min($number1, $number2);
     $gcd = 1;
-    for ($i = 2; $i <= $min; $i++) {
-        if (isDivisor($num1, $num2, $i) === true) {
+    for ($i = 2; $i <= $minNumber; $i++) {
+        if (isDivisor($number1, $i) === true && isDivisor($number2, $i) === true) {
             $gcd = $i;
         }
     }
     return $gcd;
 }
 
-function isDivisor($numer1, $numer2, $divisor)
+function isDivisor($number, $divisor)
 {
-    return $numer1 % $divisor === 0 && $numer2 % $divisor === 0;
+    return $number % $divisor === 0;
 }

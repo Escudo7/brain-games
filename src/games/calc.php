@@ -1,23 +1,27 @@
 <?php
 namespace BrainGames\games\calc;
 
-use function cli\out as out;
-use function BrainGames\games\engine\startEngine as startEngine;
+use function cli\out;
+use function BrainGames\engine\startEngine;
 
 const OPERATORS = ['+', '-', '*'];
+const MESSAGE_TASK = "What is the result of the expression?\n";
+const TEXT_QUESTION = "Question: %s %s %s\n";
+const MIN_NUMBER = 0;
+const MAX_NUMBER = 10;
+
 
 function startGameCalc()
 {
-    $startMessage = "What is the result of the expression?\n";
     $generator = function () {
-        $num1 = mt_rand(0, 10);
-        $num2 = mt_rand(0, 10);
+        $num1 = mt_rand(MIN_NUMBER, MAX_NUMBER);
+        $num2 = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $operator = OPERATORS[array_rand(OPERATORS)];
-        out("Question: %s %s %s\n", $num1, $operator, $num2);
+        out(TEXT_QUESTION, $num1, $operator, $num2);
         $answerRight = getAnswerRight($num1, $num2, $operator);
-        return $answerRight;
+        return (string) $answerRight;
     };
-    startEngine($startMessage, $generator);
+    startEngine(MESSAGE_TASK, $generator);
     return;
 }
 
@@ -31,6 +35,6 @@ function getAnswerRight($num1, $num2, $operator)
         case '*':
             return $num1 * $num2;
         default:
-            return false;
+            throw new Exception("Invalid operator");
     }
 }
