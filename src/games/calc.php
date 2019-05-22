@@ -10,7 +10,6 @@ const TEXT_QUESTION = "Question: %s %s %s\n";
 const MIN_NUMBER = 0;
 const MAX_NUMBER = 10;
 
-
 function startGameCalc()
 {
     $generator = function () {
