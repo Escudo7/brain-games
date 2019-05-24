@@ -1,23 +1,21 @@
 <?php
 namespace BrainGames\games\even;
 
-use function cli\out;
 use function BrainGames\engine\startEngine;
 
-const MESSAGE_TASK = "Answer \"yes\" if number even otherwise answer \"no\".\n";
-const TEXT_QUESTION = "Question: %s\n";
-const MIN_NUMBER = 1;
-const MAX_NUMBER = 100;
+const TASK = "Answer \"yes\" if number even otherwise answer \"no\".\n";
+const MINIMUM_NUMBER = 1;
+const MAXIMUM_NUMBER = 100;
 
 function startGameEven()
 {
     $generate = function () {
-        $number = mt_rand(MIN_NUMBER, MAX_NUMBER);
-        out(TEXT_QUESTION, $number);
-        isEven($number) ? $answerRight = 'yes' : $answerRight = 'no';
-        return $answerRight;
+        $number = mt_rand(MINIMUM_NUMBER, MAXIMUM_NUMBER);
+        $question = ["Question: %s\n", $number];
+        isEven($number) ? $rightAnswer = 'yes' : $rightAnswer = 'no';
+        return [$question, $rightAnswer];
     };
-    startEngine(MESSAGE_TASK, $generate);
+    startEngine(TASK, $generate);
     return;
 }
 

@@ -1,37 +1,30 @@
 <?php
 namespace BrainGames\games\prime;
 
-use function cli\out;
 use function BrainGames\engine\startEngine;
 
-const MESSAGE_TASK = "Answer \"yes\" if given number is prime. Otherwise answer \"no\"\n";
-const TEXT_QUESTION = "Question: %s\n";
-const MIN_NUMBER = 2;
-const MAX_NUMBER = 101;
+const TASK = "Answer \"yes\" if given number is prime. Otherwise answer \"no\"\n";
+const MINIMUN_NUMBER = 2;
+const MAXIMUM_NUMBER = 101;
 
 function startGamePrime()
 {
     $generate = function () {
-        $number = mt_rand(MIN_NUMBER, MAX_NUMBER);
-        out(TEXT_QUESTION, $number);
-        $answerRight = getAnswerRight($number);
-        return $answerRight;
+        $number = mt_rand(MINIMUN_NUMBER, MAXIMUM_NUMBER);
+        $question = ["Question: %s\n", $number];
+        $rightAnswer = 'yes';
+        for ($i = 2; $i <= ceil($number / 2); $i++) {
+            if (isDivisor($number, $i)) {
+                $rightAnswer = 'no';
+            }
+        }
+        return [$question, $rightAnswer];
     };
-    startEngine(MESSAGE_TASK, $generate);
+    startEngine(TASK, $generate);
     return;
 }
 
-function getAnswerRight($number)
-{
-    for ($i = 2; $i <= ceil($number / 2); $i++) {
-        if (isDivision($number, $i)) {
-            return 'no';
-        }
-    }
-    return 'yes';
-}
-
-function isDivision($number, $divisor)
+function isDivisor($number, $divisor)
 {
     return $number % $divisor === 0;
 }
