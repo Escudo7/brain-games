@@ -1,30 +1,30 @@
 <?php
 namespace BrainGames\games\prime;
 
-use function BrainGames\engine\startEngine;
+use function BrainGames\engine\engine;
 
-const TASK = "Answer \"yes\" if given number is prime. Otherwise answer \"no\"\n";
+const TASK = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 const MINIMUN_NUMBER = 2;
 const MAXIMUM_NUMBER = 101;
 
 function startGamePrime()
 {
-    $generate = function () {
+    $generateDateForGame = function () {
         $number = mt_rand(MINIMUN_NUMBER, MAXIMUM_NUMBER);
-        $question = ["Question: %s\n", $number];
-        $rightAnswer = 'yes';
-        for ($i = 2; $i <= ceil($number / 2); $i++) {
-            if (isDivisor($number, $i)) {
-                $rightAnswer = 'no';
-            }
-        }
+        $question = "{$number}";
+        isPrime($number) ? $rightAnswer = 'yes' : $rightAnswer = 'no';
         return [$question, $rightAnswer];
     };
-    startEngine(TASK, $generate);
+    engine(TASK, $generateDateForGame);
     return;
 }
 
-function isDivisor($number, $divisor)
+function isPrime($number)
 {
-    return $number % $divisor === 0;
+    for ($i = 2; $i <= ceil($number / 2); $i++) {
+        if ($number % $i === 0) {
+            return false;
+        }
+    }
+    return true;
 }

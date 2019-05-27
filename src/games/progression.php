@@ -1,9 +1,9 @@
 <?php
 namespace BrainGames\games\progression;
 
-use function BrainGames\engine\startEngine;
+use function BrainGames\engine\engine;
 
-const TASK = "What number is missing in the progression?\n";
+const TASK = "What number is missing in the progression?";
 const LENGTH_PROGRESSION = 10;
 const MINIMUM_STEP_PROGRESSION = 1;
 const MAXIMUM_STEP_PROGRESSION = 10;
@@ -12,7 +12,7 @@ const MAXIMUM_FIRST_NUMBER = 10;
 
 function startGameProgression()
 {
-    $generate = function () {
+    $generateDateForGame = function () {
         $firstNumber = mt_rand(MINIMUM_FIRST_NUMBER, MAXIMUM_FIRST_NUMBER);
         $stepProgression = mt_rand(MINIMUM_STEP_PROGRESSION, MAXIMUM_STEP_PROGRESSION);
         $progression = [];
@@ -20,12 +20,13 @@ function startGameProgression()
             $progression[] = $firstNumber;
             $firstNumber += $stepProgression;
         }
-        $keySecretNumber = mt_rand(0, LENGTH_PROGRESSION - 1);
-        $rightAnswer = $progression[$keySecretNumber];
-        $progression[$keySecretNumber] = '..';
-        $question = ["Question: %s\n", implode(' ', $progression)];
+        $keyOfSecretNumber = mt_rand(0, LENGTH_PROGRESSION - 1);
+        $rightAnswer = $progression[$keyOfSecretNumber];
+        $progression[$keyOfSecretNumber] = '..';
+        $progressionToString = implode(' ', $progression);
+        $question = "{$progressionToString}";
         return [$question, (string) $rightAnswer];
     };
-    startEngine(TASK, $generate);
+    engine(TASK, $generateDateForGame);
     return;
 }

@@ -1,24 +1,24 @@
 <?php
 namespace BrainGames\games\calc;
 
-use function BrainGames\engine\startEngine;
+use function BrainGames\engine\engine;
 
 const OPERATORS = ['+', '-', '*'];
-const TASK = "What is the result of the expression?\n";
+const TASK = "What is the result of the expression?";
 const MINIMUM_NUMBER = 0;
 const MAXIMUM_NUMBER = 10;
 
 function startGameCalc()
 {
-    $generate = function () {
+    $generateDateForGame = function () {
         $number1 = mt_rand(MINIMUM_NUMBER, MAXIMUM_NUMBER);
         $number2 = mt_rand(MINIMUM_NUMBER, MAXIMUM_NUMBER);
         $operator = OPERATORS[array_rand(OPERATORS)];
-        $question = ["Question: %s %s %s\n", $number1, $operator, $number2];
+        $question = "{$number1} {$operator} {$number2}";
         $rightAnswer = getRightAnswer($number1, $number2, $operator);
         return [$question, (string) $rightAnswer];
     };
-    startEngine(TASK, $generate);
+    engine(TASK, $generateDateForGame);
     return;
 }
 
