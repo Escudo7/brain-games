@@ -25,7 +25,7 @@ function getGreatestCommonDivisor($number1, $number2)
     $minimumNumber = min($number1, $number2);
     $greatestCommonDivisor = 1;
     for ($i = 2; $i <= $minimumNumber; $i++) {
-        if ($number1 % $i === 0 && $number2 % $i === 0 ) {
+        if ($number1 % $i === 0 && $number2 % $i === 0) {
                 $greatestCommonDivisor = $i;
         }
     }
