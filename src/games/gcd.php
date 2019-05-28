@@ -4,15 +4,15 @@ namespace BrainGames\games\gcd;
 use function BrainGames\engine\engine;
 
 const TASK = "Find the greatest common divisor of given numbers.";
-const MINIMUM_NUMBER = 1;
-const MAXIMUM_NUMBER = 50;
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 50;
 
-function startGameGcd()
+function startGcdGame()
 {
     $generateDateForGame = function () {
-        $number1 = mt_rand(MINIMUM_NUMBER, MAXIMUM_NUMBER);
-        $number2 = mt_rand(MINIMUM_NUMBER, MAXIMUM_NUMBER);
-        $question = "{$number1} {$number2}";
+        $number1 = mt_rand(MIN_NUMBER, MAX_NUMBER);
+        $number2 = mt_rand(MIN_NUMBER, MAX_NUMBER);
+        $question = "$number1 $number2";
         $greatestCommonDivisor = getGreatestCommonDivisor($number1, $number2);
         return [$question, (string) $greatestCommonDivisor];
     };

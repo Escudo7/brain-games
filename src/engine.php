@@ -14,7 +14,7 @@ function engine($task, $generateDateForGame)
     out("Hello, %s!\n", $userName);
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
         [$question, $rightAnswer] = $generateDateForGame();
-        out("Question: {$question}\n");
+        out("Question: $question\n");
         $answerUser = prompt("Your answer");
         if ($answerUser === $rightAnswer) {
             out("Correct!\n");

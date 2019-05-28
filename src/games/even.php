@@ -4,16 +4,15 @@ namespace BrainGames\games\even;
 use function BrainGames\engine\engine;
 
 const TASK = 'Answer "yes" if number even otherwise answer "no".';
-const MINIMUM_NUMBER = 1;
-const MAXIMUM_NUMBER = 100;
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 100;
 
-function startGameEven()
+function startEvenGame()
 {
     $generateDateForGame = function () {
-        $number = mt_rand(MINIMUM_NUMBER, MAXIMUM_NUMBER);
-        $question = "{$number}";
-        isEven($number) ? $rightAnswer = 'yes' : $rightAnswer = 'no';
-        return [$question, $rightAnswer];
+        $number = mt_rand(MIN_NUMBER, MAX_NUMBER);
+        $rightAnswer = isEven($number) ? 'yes' : 'no';
+        return [$number, $rightAnswer];
     };
     engine(TASK, $generateDateForGame);
     return;
