@@ -12,11 +12,10 @@ const MAX_FIRST_NUMBER = 10;
 
 function startProgressionGame()
 {
-    $generateDateForGame = function () {
+    $generateGameDate = function () {
         $firstNumber = mt_rand(MIN_FIRST_NUMBER, MAX_FIRST_NUMBER);
         $stepProgression = mt_rand(MIN_STEP_PROGRESSION, MAX_STEP_PROGRESSION);
-        $progression[] = $firstNumber;
-        for ($i = 1; $i < LENGTH_PROGRESSION; $i++) {
+        for ($i = 0; $i < LENGTH_PROGRESSION; $i++) {
             $progression[] = $firstNumber + $stepProgression * $i;
         }
         $keyOfSecretNumber = mt_rand(0, LENGTH_PROGRESSION - 1);
@@ -25,6 +24,6 @@ function startProgressionGame()
         $progressionToString = implode(' ', $progression);
         return [$progressionToString, (string) $rightAnswer];
     };
-    engine(TASK, $generateDateForGame);
+    engine(TASK, $generateGameDate);
     return;
 }

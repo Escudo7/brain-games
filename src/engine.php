@@ -6,14 +6,14 @@ use function cli\out;
 
 const ROUNDS_COUNT = 3;
 
-function engine($task, $generateDateForGame)
+function engine($task, $generateGameDate)
 {
     out("Welcome to the Brain Games!\n");
-    out("{$task}\n");
+    out("$task\n");
     $userName = prompt("May I have your name?", null, ' ');
     out("Hello, %s!\n", $userName);
     for ($i = 1; $i <= ROUNDS_COUNT; $i++) {
-        [$question, $rightAnswer] = $generateDateForGame();
+        [$question, $rightAnswer] = $generateGameDate();
         out("Question: $question\n");
         $answerUser = prompt("Your answer");
         if ($answerUser === $rightAnswer) {

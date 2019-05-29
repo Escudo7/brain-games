@@ -9,12 +9,12 @@ const MAX_NUMBER = 100;
 
 function startEvenGame()
 {
-    $generateDateForGame = function () {
+    $generateGameDate = function () {
         $number = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $rightAnswer = isEven($number) ? 'yes' : 'no';
         return [$number, $rightAnswer];
     };
-    engine(TASK, $generateDateForGame);
+    engine(TASK, $generateGameDate);
     return;
 }
 

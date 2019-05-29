@@ -9,12 +9,12 @@ const MAX_NUMBER = 101;
 
 function startPrimeGame()
 {
-    $generateDateForGame = function () {
+    $generateGameDate = function () {
         $number = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $rightAnswer = isPrime($number) ? 'yes' : 'no';
         return [$number, $rightAnswer];
     };
-    engine(TASK, $generateDateForGame);
+    engine(TASK, $generateGameDate);
     return;
 }
 

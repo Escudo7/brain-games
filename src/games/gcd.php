@@ -9,14 +9,14 @@ const MAX_NUMBER = 50;
 
 function startGcdGame()
 {
-    $generateDateForGame = function () {
+    $generateGameDate = function () {
         $number1 = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $number2 = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $question = "$number1 $number2";
         $greatestCommonDivisor = getGreatestCommonDivisor($number1, $number2);
         return [$question, (string) $greatestCommonDivisor];
     };
-    engine(TASK, $generateDateForGame);
+    engine(TASK, $generateGameDate);
     return;
 }
 

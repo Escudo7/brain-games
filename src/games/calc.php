@@ -10,7 +10,7 @@ const MAX_NUMBER = 10;
 
 function startCalcGame()
 {
-    $generateDateForGame = function () {
+    $generateGameDate = function () {
         $number1 = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $number2 = mt_rand(MIN_NUMBER, MAX_NUMBER);
         $operator = OPERATORS[array_rand(OPERATORS)];
@@ -18,7 +18,7 @@ function startCalcGame()
         $rightAnswer = getRightAnswer($number1, $number2, $operator);
         return [$question, (string) $rightAnswer];
     };
-    engine(TASK, $generateDateForGame);
+    engine(TASK, $generateGameDate);
     return;
 }
 
